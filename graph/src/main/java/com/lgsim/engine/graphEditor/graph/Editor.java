@@ -99,8 +99,7 @@ public class Editor extends JPanel implements IEditor {
 
     libraryPane.setMinimumSize(new Dimension(320, 0));
     graphOutline.setMinimumSize(new Dimension(320, 320));
-
-    vertexTable.getSwingComponent().setMinimumSize(new Dimension(320, 0));
+    vertexTable.getSwingComponent().setMinimumSize(new Dimension(500, 0));
     console.setMinimumSize(new Dimension(0, 210));
 
     westPane.getRightComponent().setPreferredSize(

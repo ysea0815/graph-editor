@@ -6,6 +6,7 @@ import com.lgsim.engine.graphEditor.util.ImplementationUtil;
 import com.lgsim.engine.graphEditor.util.ResourceUtil;
 import com.lgsim.engine.graphEditor.widget.ActionBundle;
 import com.lgsim.engine.graphEditor.widget.IWidegtImp.IMenuBarImp;
+import com.lgsim.engine.graphEditor.widget.util.setfont.SetFont;
 import org.apache.commons.lang.exception.ExceptionUtils;
 
 import javax.swing.*;
@@ -15,6 +16,10 @@ import java.util.List;
 import java.util.Map;
 
 public class MenuBar extends JMenuBar {
+
+    SetFont setFont = new SetFont();
+
+    String p = "com/lgsim/engine/graphEditor/widget/images/toolbar/";//图片公共路径
 
     public MenuBar() {
     }
@@ -39,29 +44,30 @@ public class MenuBar extends JMenuBar {
 
     private void addFileMenu(IApplicationAction action) {
 
-        JMenu doc = new JMenu(ActionBundle.get("file.name"));
-        JMenuItem save = createMenuItem("file.save", action.getDocumentSaveAction(), "file.save");
-        JMenuItem news = createMenuItem("file.new", action.getDocumentNewAction(), "file.new");
-        JMenuItem open = createMenuItem("file.open", action.getDocumentOpenAction(), "file.open");
-        JMenuItem saveAs = createMenuItem("file.saveAs", null, "file.saveAs");
-        JMenuItem pictureOut = createMenuItem("file.pictureOut", null, "file.pictureOut");
-        JMenuItem network = createMenuItem("file.switch.network", null, "file.switch.network");
-        JMenuItem input = createMenuItem("file.import.data", null, "file.import.data");
-        JMenuItem out = createMenuItem("file.out.data", null, "file.out.data");
-        JMenuItem auto = createMenuItem("file.auto", null, "file.auto");
-        JMenuItem svg = createMenuItem("file.svg", null, "file.svg");
-        JMenuItem flash = createMenuItem("file.flash", null, "file.flash");
-        JMenuItem sliver = createMenuItem("file.sliver", null, "file.sliver");
-        JMenuItem pdf = createMenuItem("file.pdf", null, "file.pdf");
-        JMenuItem pageSet = createMenuItem("file.pageSet", null, "file.pageSet");
-        JMenuItem preview = createMenuItem("file.preview", null, "file.preview");
-        JMenuItem print = createMenuItem("file.print", null, "file.print");
-        JMenuItem set = createMenuItem("file.set", null, "file.set");
-        JMenuItem close = createMenuItem("file.close", null, "file.close");
-        JMenuItem exit = createMenuItem("file.exit", action.getApplicationExitAction(), "file.exit");
 
-        JMenuItem[] actions = {news, open, save, saveAs, pictureOut, network, input, out, auto, svg, flash,
-                sliver, pdf, pageSet, preview, print, set, close, exit};
+        JMenu doc = new JMenu(setFont.setFontSize("文件",14));
+        JMenuItem news = createMenuItem(setFont.setFontSize("新建...",14), action.getDocumentNewAction(), p + "newfile.png");
+        JMenuItem save = createMenuItem(setFont.setFontSize("保存...",14), action.getDocumentSaveAction(), p + "save.png");
+        JMenuItem open = createMenuItem(setFont.setFontSize("打开...",14), action.getDocumentOpenAction(), p + "open.png");
+        JMenuItem saveAs = createMenuItem(setFont.setFontSize("另存为...",14), null, p + "saveas.png");
+        JMenuItem pictureOut = createMenuItem(setFont.setFontSize("图片导出...",14), null, p + "pictureout.png");
+        /*JMenuItem network = createMenuItem("file.switch.network", null, "file.switch.network");
+        JMenuItem input = createMenuItem("file.import.data", null, "file.import.data");
+        JMenuItem out = createMenuItem("file.out.data", null, "file.out.data");*/
+        JMenuItem auto = createMenuItem(setFont.setFontSize("Autocad导出...",14), null, p + "auto.png");
+        JMenuItem svg = createMenuItem(setFont.setFontSize("SVG导出...",14), null, p + "svg.png");
+        JMenuItem flash = createMenuItem(setFont.setFontSize("Flash导出...",14), null, p + "flash.png");
+        JMenuItem sliver = createMenuItem(setFont.setFontSize("Sliverlight导出...",14), null, p + "sliver.png");
+        JMenuItem pdf = createMenuItem(setFont.setFontSize("PDF导出...",14), null, p + "pdf.png");
+        JMenuItem pageSet = createMenuItem(setFont.setFontSize("页面设置...",14), null, p + "pageset.png");
+        JMenuItem preview = createMenuItem(setFont.setFontSize("打印预览...",14), null, p + "preview.png");
+        JMenuItem print = createMenuItem(setFont.setFontSize("打印...",14), null, p + "print.png");
+        JMenuItem set = createMenuItem(setFont.setFontSize("设置",14), null, "");
+        //JMenuItem close = createMenuItem("file.close", null, "file.close");
+        JMenuItem exit = createMenuItem(setFont.setFontSize("退出",14), action.getApplicationExitAction(), "");
+
+        JMenuItem[] actions = {news, open, save, saveAs, pictureOut, auto, svg, flash,
+                sliver, pdf, pageSet, preview, print, set, exit};
 
         List<JMenuItem> actionList = Arrays.asList(actions);
         List<Integer> separatorList = Arrays.asList(4, 7, 13, 18);
@@ -72,16 +78,16 @@ public class MenuBar extends JMenuBar {
 
     private void addEditorMenu(IApplicationAction action) {
 
-        JMenu doc = new JMenu(ActionBundle.get("editor.name"));
-        JMenuItem undo = createMenuItem("editor.undo", null, "editor.undo");
-        JMenuItem redo = createMenuItem("editor.redo", null, "editor.redo");
-        JMenuItem cut = createMenuItem("editor.cut", action.getVertexCellCutAction(), "editor.cut");
-        JMenuItem copy = createMenuItem("editor.copy", action.getVertexCellCopyAction(), "editor.copy");
-        JMenuItem paste = createMenuItem("editor.paste", action.getVertexCellPasteAction(), "editor.paste");
-        JMenuItem delete = createMenuItem("editor.delete", action.getVertexCellDeleteAction(), "editor.delete");
-        JMenuItem selectAll = createMenuItem("editor.selectAll", null, "editor.selectAll");
-        JMenuItem dimensional = createMenuItem("editor.one.dimensional.shape", null, "editor.one.dimensional.shape");
-        JMenuItem dimensional2 = createMenuItem("editor.two.dimensional.shape", null, "editor.two.dimensional.shape");
+        JMenu doc = new JMenu(setFont.setFontSize("编辑",14));
+        JMenuItem undo = createMenuItem(setFont.setFontSize("撤消Ctrl+Z",14), null, p + "undo.png");
+        JMenuItem redo = createMenuItem(setFont.setFontSize("重做Ctrl+Z",14), null, p + "redo.png");
+        JMenuItem cut = createMenuItem(setFont.setFontSize("剪贴Ctrl+X",14), action.getVertexCellCutAction(), p + "cut.png");
+        JMenuItem copy = createMenuItem(setFont.setFontSize("复制Ctrl+Y",14), action.getVertexCellCopyAction(), p + "copy.png");
+        JMenuItem paste = createMenuItem(setFont.setFontSize("粘贴Ctrl+V",14), action.getVertexCellPasteAction(), p + "paste.png");
+        JMenuItem delete = createMenuItem(setFont.setFontSize("删除",14), action.getVertexCellDeleteAction(), p + "delete.png");
+        JMenuItem selectAll = createMenuItem(setFont.setFontSize("选择全部Ctrl+A",14), null, "");
+        JMenuItem dimensional = createMenuItem(setFont.setFontSize("选择所有一维形状",14), null, "");
+        JMenuItem dimensional2 = createMenuItem(setFont.setFontSize("选择所有二维形状",14), null, "");
 
         JMenuItem[] actions = {undo, redo, cut, copy, paste, delete, selectAll, dimensional, dimensional2};
 
@@ -95,48 +101,48 @@ public class MenuBar extends JMenuBar {
 
     private void addViewMenu(IApplicationAction action) {
 
-        JMenu doc = new JMenu(ActionBundle.get("view.name"));
+        JMenu doc = new JMenu(setFont.setFontSize("视图",14));
 
-        JMenuItem scale = createMenuItem("view.scale", null, "view.scale");
-        JMenuItem grid = createMenuItem("view.grid", null, "view.grid");
-        JMenuItem reference = createMenuItem("view.reference", null, "view.reference");
-        JMenuItem port = createMenuItem("view.port", null, "view.port");
-        JMenuItem shadow = createMenuItem("view.shadow", null, "view.shadow");
-        JMenuItem arrow = createMenuItem("view.arrow", null, "view.arrow");
-        JMenuItem library = createMenuItem("view.component,library.browser", null, "view.component,library.browser");
-        JMenuItem property = createMenuItem("view.property.browser", null, "view.property.browser");
+        JMenuItem scale = createMenuItem(setFont.setFontSize("标尺",14), null, p + "scale.png");
+        JMenuItem grid = createMenuItem(setFont.setFontSize("网格",14), null, p + "vgrid.png");
+        JMenuItem reference = createMenuItem(setFont.setFontSize("参考",14), null, p + "reference.png");
+        JMenuItem port = createMenuItem(setFont.setFontSize("端口",14), null, p + "port.png");
+        JMenuItem shadow = createMenuItem(setFont.setFontSize("阴影",14), null, p + "shadow.png");
+        JMenuItem arrow = createMenuItem(setFont.setFontSize("箭头",14), null, p + "arrow.png");
+        JMenuItem library = createMenuItem(setFont.setFontSize("元件库浏览器",14), null, p + "combrowsers.png");
+        JMenuItem property = createMenuItem(setFont.setFontSize("属性浏览器",14), null, p + "proBrowsers.png");
 
-        JMenu subGridStyle = new JMenu(ActionBundle.get("view.grid.style"));
-        JMenuItem mainLine = createMenuItem("grid.style.main.line", null, "grid.style.main.line");
-        JMenuItem secondLine = createMenuItem("grid.style.main.second.line", null, "grid.style.main.second.line");
-        JMenuItem point = createMenuItem("grid.style.main.point", null, "grid.style.main.point");
-        JMenuItem scan = createMenuItem("grid.style.interlaced.scan", null, "grid.style.interlaced.scan");
-        JMenuItem horizontal = createMenuItem("grid.style.interlaced.horizontal", null, "grid.style.interlaced.horizontal");
-        JMenuItem vertical = createMenuItem("grid.style.interlaced.vertical", null, "grid.style.interlaced.vertical");
+        JMenu subGridStyle = new JMenu(setFont.setFontSize("网格风格",14));
+        JMenuItem mainLine = createMenuItem(setFont.setFontSize("主线",14), null, p + "vgrid.png");
+        JMenuItem secondLine = createMenuItem(setFont.setFontSize("主次线",14), null, p + "vgrid.png");
+        JMenuItem point = createMenuItem(setFont.setFontSize("主点",14), null, p + "mpoint.png");
+        JMenuItem scan = createMenuItem(setFont.setFontSize("隔行扫描",14), null, p + "scan.png");
+        JMenuItem horizontal = createMenuItem(setFont.setFontSize("隔行水平",14), null, p + "horizontal.png");
+        JMenuItem vertical = createMenuItem(setFont.setFontSize("隔行竖直",14), null, p + "vertical.png");
         JMenuItem[] gridSubActions = {mainLine, secondLine, point, scan, horizontal, vertical};
 
         List<JMenuItem> gridSubActionList = Arrays.asList(gridSubActions);
         addMenuItem(gridSubActionList, subGridStyle, null, null);
 
-        JMenu subLookLayout = new JMenu(ActionBundle.get("view.lookLayout"));
-        JMenuItem common = createMenuItem("lookLayout.common", null, "lookLayout.common");
-        JMenuItem suit = createMenuItem("lookLayout.suit", null, "lookLayout.suit");
-        JMenuItem stretch = createMenuItem("lookLayout.stretch", null, "lookLayout.stretch");
-        JMenuItem Hstretch = createMenuItem("lookLayout.H.stretch", null, "lookLayout.H.stretch");
-        JMenuItem Vstretch = createMenuItem("lookLayout.V.stretch", null, "lookLayout.V.stretch");
+        JMenu subLookLayout = new JMenu(setFont.setFontSize("查看布局",14));
+        JMenuItem common = createMenuItem(setFont.setFontSize("普通的",14), null, p + "common.png");
+        JMenuItem suit = createMenuItem(setFont.setFontSize("适合",14), null, p + "suit.png");
+        JMenuItem stretch = createMenuItem(setFont.setFontSize("拉伸",14), null, p + "stretch.png");
+        JMenuItem Hstretch = createMenuItem(setFont.setFontSize("横向拉伸",14), null, p + "hstretch.png");
+        JMenuItem Vstretch = createMenuItem(setFont.setFontSize("纵向拉伸",14), null, p + "vstretch.png");
 
         JMenuItem[] lookLayoutSubActions = {common, suit, stretch, Hstretch, Vstretch};
         List<JMenuItem> lookLayoutSubActionList = Arrays.asList(lookLayoutSubActions);
         addMenuItem(lookLayoutSubActionList, subLookLayout, null, null);
 
 
-        JMenuItem magnify = createMenuItem("view.magnify", null, "view.magnify");
-        JMenuItem narrow = createMenuItem("view.narrow", null, "view.narrow");
-        JMenuItem ratio = createMenuItem("view.magnify.ratio", null, "view.magnify.ratio");
-        JMenuItem alignGrid = createMenuItem("view.align.grid", null, "view.align.grid");
-        JMenuItem alignScale = createMenuItem("view.align.scale", null, "view.align.scale");
-        JMenuItem guidance = createMenuItem("view.capture.guidance", null, "view.capture.guidance");
-        JMenuItem rotate = createMenuItem("view.capture.rotate", null, "view.capture.rotate");
+        JMenuItem magnify = createMenuItem(setFont.setFontSize("放大",14), null, p + "magnify.png");
+        JMenuItem narrow = createMenuItem(setFont.setFontSize("缩小",14), null, p + "narrow.png");
+        JMenuItem ratio = createMenuItem(setFont.setFontSize("放大比例",14), null, "");
+        JMenuItem alignGrid = createMenuItem(setFont.setFontSize("对齐网格",14), null, p + "aligrid.png");
+        JMenuItem alignScale = createMenuItem(setFont.setFontSize("对齐标尺",14), null, p + "aliscale.png");
+        JMenuItem guidance = createMenuItem(setFont.setFontSize("捕捉指引",14), null, p + "catguide.png");
+        JMenuItem rotate = createMenuItem(setFont.setFontSize("捕捉旋转",14), null, p + "catrotation.png");
 
         JMenuItem[] actions = {scale, grid, reference, port, shadow, arrow, library, property, null, null,
                 magnify, narrow, ratio, alignGrid, alignScale, guidance, rotate};
@@ -156,21 +162,21 @@ public class MenuBar extends JMenuBar {
 
     private void addFormatMenu(IApplicationAction action) {
 
-        JMenu doc = new JMenu(ActionBundle.get("format.name"));
+        JMenu doc = new JMenu(setFont.setFontSize("格式",14));
 
-        JMenuItem fill = createMenuItem("format.fill.style", null, "format.fill.style");
-        JMenuItem brush = createMenuItem("format.brush.style", null, "format.brush.style");
-        JMenuItem shadow = createMenuItem("format.shadow.style", null, "format.shadow.style");
-        JMenuItem text = createMenuItem("format.text.style", null, "format.text.style");
-        JMenuItem startArrrow = createMenuItem("format.start.arrow.style", null, "format.start.arrow.style");
-        JMenuItem endArrow = createMenuItem("format.end.arrow.style", null, "format.end.arrow.style");
-        JMenuItem connect = createMenuItem("format.connect.style", null, "format.connect.style");
-        JMenuItem interaction = createMenuItem("format.interaction.style", null, "format.interaction.style");
-        JMenuItem unit = createMenuItem("format.set.unit", null, "format.set.unit");
-        JMenuItem save = createMenuItem("format.save", null, "format.save");
-        JMenuItem interact = createMenuItem("format.interact", null, "format.interact");
+        JMenuItem fill = createMenuItem(setFont.setFontSize("填充样式...",14), null, p + "fill.png");
+        JMenuItem brush = createMenuItem(setFont.setFontSize("笔画样式...",14), null, p + "brush.png");
+        JMenuItem shadow = createMenuItem(setFont.setFontSize("阴影样式...",14), null, p + "shadow.png");
+        JMenuItem text = createMenuItem(setFont.setFontSize("文本样式...",14), null, p + "text.png");
+        JMenuItem startArrrow = createMenuItem(setFont.setFontSize("开始箭头方式...",14), null, p + "startarrow.png");
+        JMenuItem endArrow = createMenuItem(setFont.setFontSize("结束箭头方式...",14), null, p + "endarrow.png");
+        JMenuItem connect = createMenuItem(setFont.setFontSize("连接风格...",14), null, p + "connect.png");
+        JMenuItem interaction = createMenuItem(setFont.setFontSize("交互性风格...",14), null, p + "interaction.png");
+        //JMenuItem unit = createMenuItem(setFont.setFontSize("笔画样式...",14), null, "format.set.unit");
+        //JMenuItem save = createMenuItem(setFont.setFontSize("笔画样式...",14), null, "format.save");
+        JMenuItem interact = createMenuItem(setFont.setFontSize("模板...",14), null, p + "interact.png");
 
-        JMenuItem[] actions = {fill, brush, shadow, text, startArrrow, endArrow, connect, interaction, unit, save, interact};
+        JMenuItem[] actions = {fill, brush, shadow, text, startArrrow, endArrow, connect, interaction, interact};
         List<JMenuItem> actionList = Arrays.asList(actions);
         List<Integer> separatorList = Arrays.asList(4, 7, 9);
 
@@ -181,47 +187,47 @@ public class MenuBar extends JMenuBar {
 
     private void addMoveMenu(IApplicationAction action) {
 
-        JMenu doc = new JMenu(ActionBundle.get("move.name"));
+        JMenu doc = new JMenu(setFont.setFontSize("动作",14));
 
-        JMenu operate = new JMenu(ActionBundle.get("move.operate"));
-        JMenuItem relink = createMenuItem("operate.relink", null, "operate.relink");
-        JMenuItem reverse = createMenuItem("operate.reverse", null, "operate.reverse");
-        JMenuItem refect = createMenuItem("operate.refect", null, "operate.refect");
-        JMenuItem border = createMenuItem("operate.update.border", null, "operate.update.border");
+        JMenu operate = new JMenu(setFont.setFontSize("操作",14));
+        JMenuItem relink = createMenuItem(setFont.setFontSize("重连线",14), null, p + "relink.png");
+        JMenuItem reverse = createMenuItem(setFont.setFontSize("逆转",14), null, p + "reverse.png");
+        JMenuItem refect = createMenuItem(setFont.setFontSize("反射",14), null, p + "refect.png");
+        JMenuItem border = createMenuItem(setFont.setFontSize("更新模型的边界",14), null, "");
         JMenuItem[] operateArr = {relink, reverse, refect, border};
         List<JMenuItem> operateList = Arrays.asList(operateArr);
         addMenuItem(operateList, operate, null, null);
 
-        JMenu group = new JMenu(ActionBundle.get("move.group"));
-        JMenuItem group2 = createMenuItem("group.group", null, "group.group");
-        JMenuItem cancel = createMenuItem("group.cancel", null, "group.cancel");
+        JMenu group = new JMenu(setFont.setFontSize("分组",14));
+        JMenuItem group2 = createMenuItem(setFont.setFontSize("组",14), null, p + "group.png");
+        JMenuItem cancel = createMenuItem(setFont.setFontSize("取消组合",14), null, p + "cancel.png");
         List<JMenuItem> groupList = Arrays.asList(group2, cancel);
         addMenuItem(groupList, group, null, null);
 
-        JMenuItem layout = createMenuItem("move.layout", null, "move.layout");
+        JMenuItem layout = createMenuItem(setFont.setFontSize("布局",14), null, "");
 
-        JMenu order = new JMenu(ActionBundle.get("move.order"));
-        JMenuItem first = createMenuItem("order.first", null, "order.first");
-        JMenuItem last = createMenuItem("order.last", null, "order.last");
-        JMenuItem previous = createMenuItem("order.previous", null, "order.previous");
-        JMenuItem next = createMenuItem("order.next", null, "order.next");
+        JMenu order = new JMenu(setFont.setFontSize("顺序",14));
+        JMenuItem first = createMenuItem(setFont.setFontSize("移到最前",14), null, p + "move1.png");
+        JMenuItem last = createMenuItem(setFont.setFontSize("移到最后",14), null, p + "move1.png");
+        JMenuItem previous = createMenuItem(setFont.setFontSize("移到上一层",14), null, p + "move2.png");
+        JMenuItem next = createMenuItem(setFont.setFontSize("移到下一层",14), null, p + "move2.png");
         List<JMenuItem> orderList = Arrays.asList(first, last, previous, next);
         addMenuItem(orderList, order, null, null);
 
-        JMenu turn = new JMenu(ActionBundle.get("move.turn"));
-        JMenuItem left = createMenuItem("turn.left", null, "turn.left");
-        JMenuItem right = createMenuItem("turn.right", null, "turn.right");
-        JMenuItem hFlip = createMenuItem("turn.H.flip", null, "turn.H.flip");
-        JMenuItem vflip = createMenuItem("turn.V.flip", null, "turn.V.flip");
+        JMenu turn = new JMenu(setFont.setFontSize("旋转或者翻转",14));
+        JMenuItem left = createMenuItem(setFont.setFontSize("左旋",14), null, p + "left1.png");
+        JMenuItem right = createMenuItem(setFont.setFontSize("右旋",14), null, p + "right1.png");
+        JMenuItem hFlip = createMenuItem(setFont.setFontSize("水平翻转",14), null, p + "vstretch.png");
+        JMenuItem vflip = createMenuItem(setFont.setFontSize("垂直翻转",14), null, p + "hstretch.png");
         JMenuItem[] turnArr = {left, right, hFlip, vflip};
         List<JMenuItem> turnList = Arrays.asList(turnArr);
         addMenuItem(turnList, turn, null, null);
 
-        JMenu tiny = new JMenu(ActionBundle.get("move.tiny"));
-        JMenuItem tLeft = createMenuItem("tiny.left", null, "tiny.left");
-        JMenuItem tRight = createMenuItem("tiny.right", null, "tiny.right");
-        JMenuItem tTop = createMenuItem("tiny.top", null, "tiny.top");
-        JMenuItem tBottom = createMenuItem("tiny.bottom", null, "tiny.bottom");
+        JMenu tiny = new JMenu(setFont.setFontSize("微调",14));
+        JMenuItem tLeft = createMenuItem(setFont.setFontSize("向左微调",14), null, p + "left1.png");
+        JMenuItem tRight = createMenuItem(setFont.setFontSize("向右微调",14), null, p + "right2.png");
+        JMenuItem tTop = createMenuItem(setFont.setFontSize("向上微调",14), null, p + "top1.png");
+        JMenuItem tBottom = createMenuItem(setFont.setFontSize("向底部微调",14), null, p + "bottom1.png");
         JMenuItem[] tinyArr = {tLeft, tRight, tTop, tBottom};
         List<JMenuItem> tinyList = Arrays.asList(tinyArr);
         addMenuItem(tinyList, tiny, null, null);
@@ -241,55 +247,55 @@ public class MenuBar extends JMenuBar {
 
     private void addLayoutMenu(IApplicationAction action) {
 
-        JMenu doc = new JMenu(ActionBundle.get("layout.name"));
+        JMenu doc = new JMenu(setFont.setFontSize("布局",14));
 
-        JMenuItem search = createMenuItem("layout.search.branch", null, "layout.search.branch");
+        /*JMenuItem search = createMenuItem("layout.search.branch", null, "layout.search.branch");
         JMenuItem last = createMenuItem("layout.last", null, "layout.last");
         JMenuItem next = createMenuItem("layout.next", null, "layout.next");
-        JMenuItem bgp = createMenuItem("layout.bgp", null, "layout.bgp");
+        JMenuItem bgp = createMenuItem("layout.bgp", null, "layout.bgp");*/
 
-        JMenu align = new JMenu(ActionBundle.get("layout.align"));
-        JMenuItem left = createMenuItem("align.left", null, "align.left");
-        JMenuItem center = createMenuItem("align.center", null, "align.center");
-        JMenuItem right = createMenuItem("align.right", null, "align.right");
-        JMenuItem top = createMenuItem("align.top", null, "align.top");
-        JMenuItem middle = createMenuItem("align.middle", null, "align.middle");
-        JMenuItem bottom = createMenuItem("align.bottom", null, "align.bottom");
-        JMenuItem grid = createMenuItem("align.grid", null, "align.grid");
+        JMenu align = new JMenu(setFont.setFontSize("对齐",14));
+        JMenuItem left = createMenuItem(setFont.setFontSize("左对齐",14), null, p + "left1.png");
+        JMenuItem center = createMenuItem(setFont.setFontSize("对齐中心",14), null, p + "center1.png");
+        JMenuItem right = createMenuItem(setFont.setFontSize("右对齐",14), null, p + "right1.png");
+        JMenuItem top = createMenuItem(setFont.setFontSize("顶部对齐",14), null, p + "top1.png");
+        JMenuItem middle = createMenuItem(setFont.setFontSize("中间对齐",14), null, p + "center1.png");
+        JMenuItem bottom = createMenuItem(setFont.setFontSize("底部对齐",14), null, p + "bottom1.png");
+        JMenuItem grid = createMenuItem(setFont.setFontSize("对齐到网格",14), null, p + "gridstyle.png");
         JMenuItem[] alignArr = {left, center, right, top, middle, bottom, grid};
         List<JMenuItem> alignList = Arrays.asList(alignArr);
         addMenuItem(alignList, align, null, null);
 
-        JMenu size = new JMenu(ActionBundle.get("layout.size"));
-        JMenuItem width = createMenuItem("size.same.width", null, "size.same.width");
-        JMenuItem height = createMenuItem("size.same.height", null, "size.same.height");
-        JMenuItem sSize = createMenuItem("size.same.size", null, "size.same.size");
-        JMenuItem sGrid = createMenuItem("size.same.grid", null, "size.same.grid");
+        JMenu size = new JMenu(setFont.setFontSize("尺寸",14));
+        JMenuItem width = createMenuItem(setFont.setFontSize("同一宽度",14), null, p + "comwidth1.png");
+        JMenuItem height = createMenuItem(setFont.setFontSize("同一高度",14), null, p + "gridstyle.png");
+        JMenuItem sSize = createMenuItem(setFont.setFontSize("同一大小",14), null, p + "gridstyle.png");
+        JMenuItem sGrid = createMenuItem(setFont.setFontSize("与网格同大小",14), null, p + "gridstyle.png");
         List<JMenuItem> sizeList = Arrays.asList(width, height, sSize, sGrid);
         addMenuItem(sizeList, size, null, null);
 
-        JMenu textCenter = new JMenu(ActionBundle.get("layout.center"));
-        JMenuItem hFile = createMenuItem("center.file.H", null, "center.file.H");
-        JMenuItem vFile = createMenuItem("center.file.V", null, "center.file.V");
+        JMenu textCenter = new JMenu(setFont.setFontSize("中心",14));
+        JMenuItem hFile = createMenuItem(setFont.setFontSize("文件中心水平",14), null, p + "vstretch.png");
+        JMenuItem vFile = createMenuItem(setFont.setFontSize("文件中心垂直",14), null, p + "hstretch.png");
         List<JMenuItem> centerList = Arrays.asList(hFile, vFile);
         addMenuItem(centerList, textCenter, null, null);
 
-        JMenu gap = new JMenu(ActionBundle.get("layout.gap"));
-        JMenuItem sameH = createMenuItem("gap.H.same", null, "gap.H.same");
-        JMenuItem addH = createMenuItem("gap.H.add", null, "gap.H.add");
-        JMenuItem reduceH = createMenuItem("gap.H.reduce", null, "gap.H.reduce");
-        JMenuItem moveH = createMenuItem("gap.H.move", null, "gap.H.move");
-        JMenuItem sameV = createMenuItem("gap.V.same", null, "gap.V.same");
-        JMenuItem addV = createMenuItem("gap.V.add", null, "gap.V.add");
-        JMenuItem reduceV = createMenuItem("gap.V.reduce", null, "gap.V.reduce");
-        JMenuItem moveV = createMenuItem("gap.V.move", null, "gap.V.move");
+        JMenu gap = new JMenu(setFont.setFontSize("间隙",14));
+        JMenuItem sameH = createMenuItem(setFont.setFontSize("水平间距相等",14), null, p + "vstretch.png");
+        JMenuItem addH = createMenuItem(setFont.setFontSize("增加水平间距",14), null, p + "vstretch.png");
+        JMenuItem reduceH = createMenuItem(setFont.setFontSize("减少水平间距",14), null, p + "vstretch.png");
+        JMenuItem moveH = createMenuItem(setFont.setFontSize("移动水平间距",14), null, p + "vstretch.png");
+        JMenuItem sameV = createMenuItem(setFont.setFontSize("竖直间距相等",14), null, p + "hstretch.png");
+        JMenuItem addV = createMenuItem(setFont.setFontSize("增加竖直间距",14), null, p + "hstretch.png");
+        JMenuItem reduceV = createMenuItem(setFont.setFontSize("减少竖直间距",14), null, p + "hstretch.png");
+        JMenuItem moveV = createMenuItem(setFont.setFontSize("移动竖直间距",14), null, p + "hstretch.png");
         JMenuItem[] gapArr = {sameH, addH, reduceH, moveH, sameV, addV, reduceV, moveV};
         List<JMenuItem> gapList = Arrays.asList(gapArr);
         addMenuItem(gapList, gap, null, null);
 
-        JMenuItem shape = createMenuItem("layout.shape", null, "layout.shape");
+        JMenuItem shape = createMenuItem(setFont.setFontSize("布局形状",14), null, p + "layout.png");
 
-        JMenuItem[] actions = {search, last, next, bgp, null, null, center, null, shape};
+        JMenuItem[] actions = {null, null, center, null, shape};
         List<JMenuItem> actionList = Arrays.asList(actions);
         List<Integer> separatorList = Arrays.asList(3, 8);
 
@@ -401,9 +407,9 @@ public class MenuBar extends JMenuBar {
 
     public JMenuItem createMenuItem(String key, Action action, String iconPath) {
 
-        iconPath = "com/lgsim/engine/graphEditor/widget/png/monkey.png";
+        //iconPath = "";
         Icon icon = ResourceUtil.lookupImageIcon(iconPath);
-        JMenuItem menuItem = new JMenuItem(ActionBundle.get(key), icon);
+        JMenuItem menuItem = new JMenuItem(key, icon);
         menuItem.addActionListener(action);
         return menuItem;
     }

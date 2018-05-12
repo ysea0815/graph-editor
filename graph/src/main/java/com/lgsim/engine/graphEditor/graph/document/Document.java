@@ -31,9 +31,8 @@ public class Document extends GraphDocumentImpl implements IApplicationWidget {
   {
     this.editor = editor;
     this.application = editor.getApplication();
-    final Graph graph = new Graph();
-    this.swingComponent = new GraphComponent(graph);
-    this.setGraph(graph);
+    this.swingComponent = new GraphComponent(new Graph());
+    this.setGraph(new Graph());
     settingGraphComponent();
   }
 

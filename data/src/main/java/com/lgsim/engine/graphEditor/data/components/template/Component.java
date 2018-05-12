@@ -21,9 +21,11 @@ public class Component extends VertexImpl implements IVertexStencil, IVertex {
     private List<IVertexOutput> outputs;//输出参数
     private ComponentArm componentArms;//元件端口
     private List<String> armnodes = new ArrayList<>();//端口集合
-    private List<String> feature = new ArrayList<>();//端口集合
+    private List<String> feature = new ArrayList<>();//
     private List<IVertex> componentInputPorts;//输入到该节点的端口
     private List<IVertex> componentOutputPorts;//该节点输出的端口
+    private List<String> inPorts;//输入端口
+    private List<String> outPorts;//输出端口
     private String featureName;//参数特点name
 
     public Component() {
@@ -38,6 +40,8 @@ public class Component extends VertexImpl implements IVertexStencil, IVertex {
         this.armnodes.add(componentArms.getComponentArmNodeName());
         this.componentInputPorts = new ArrayList<>();
         this.componentOutputPorts = new ArrayList<>();
+        this.inPorts = new ArrayList<>();
+        this.outPorts = new ArrayList<>();
     }
 
     public Component(Component component) {
@@ -51,6 +55,22 @@ public class Component extends VertexImpl implements IVertexStencil, IVertex {
         this.componentArms = component.componentArms;
         this.componentInputPorts = component.componentInputPorts;
         this.componentOutputPorts = component.componentOutputPorts;
+    }
+
+    public List<String> getInPorts() {
+        return inPorts;
+    }
+
+    public void setInPorts(List<String> inPorts) {
+        this.inPorts = inPorts;
+    }
+
+    public List<String> getOutPorts() {
+        return outPorts;
+    }
+
+    public void setOutPorts(List<String> outPorts) {
+        this.outPorts = outPorts;
     }
 
     public void setPredefined(boolean predefined) {
@@ -234,7 +254,7 @@ public class Component extends VertexImpl implements IVertexStencil, IVertex {
                         '}' ;
     }*/
 
-    @Override
+    /*@Override
     public String toString() {
         return "{" +
                 "\"Name\":\"" + componentName + '\"' +
@@ -242,6 +262,41 @@ public class Component extends VertexImpl implements IVertexStencil, IVertex {
                 ",\"ArmNodes\":" + armnodes +
                 ",\"Feature\":" + feature +
                 '}';
+    }*/
+
+    public List<String> getPors() {
+        List<String> pors = new ArrayList<>();
+
+        String po;
+        for (String port : getInPorts()) {
+            po = "\"" + port + "\"";
+            pors.add(po);
+        }
+        for (String port : getOutPorts()) {
+            po = "\"" + port + "\"";
+            pors.add(po);
+        }
+        return pors;
+    }
+
+    public List<String> getValues() {
+        List<String> values = new ArrayList<>();
+        for (int i = 0;i < getArguments().size();i++) {
+            String value = "\"" + String.valueOf(getArguments().get(i).getValue()) + "\"";
+            values.add(value);
+        }
+        return values;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "\"Name\":\"" + getComponentName() + '\"' +
+                ",\"Type\":\"" + getTypeID() + '\"' +
+                ",\"ArmNodes\":" + getPors() +
+                ",\"Feature\":[{\"Name\":\"" + "Input" + "\"" +
+                ",\"Value\":" + getValues() +
+                "}";
     }
 
     /*@Override

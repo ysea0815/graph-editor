@@ -31,6 +31,16 @@
               "ParameterName":"GEO4",
               "ParameterUnitID":"1",
               "ParameterDescription":"周长"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -101,6 +111,16 @@
               "ParameterName":"GEO15",
               "ParameterUnitID":"1",
               "ParameterDescription":"内弧长"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -191,6 +211,16 @@
               "ParameterName":"GEO16",
               "ParameterUnitID":"1",
               "ParameterDescription":"肋长(S)"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -286,6 +316,16 @@
               "ParameterName":"GEO21",
               "ParameterUnitID":"1",
               "ParameterDescription":"压力面内弧长"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -401,6 +441,16 @@
               "ParameterName":"GEO21",
               "ParameterUnitID":"1",
               "ParameterDescription":"压力面内弧长"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         }
@@ -437,6 +487,16 @@
               "ParameterName":"GEO4",
               "ParameterUnitID":"1",
               "ParameterDescription":"周长"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         }
@@ -463,6 +523,16 @@
               "ParameterName":"GEO2",
               "ParameterUnitID":"0",
               "ParameterDescription":"总压损失系数"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -483,6 +553,16 @@
               "ParameterName":"GEO2",
               "ParameterUnitID":"0",
               "ParameterDescription":"总压损失系数"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -498,6 +578,16 @@
               "ParameterName":"GEO1",
               "ParameterUnitID":"2",
               "ParameterDescription":"出口面积"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -513,6 +603,16 @@
               "ParameterName":"GEO1",
               "ParameterUnitID":"2",
               "ParameterDescription":"出口面积"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         }
@@ -539,6 +639,16 @@
               "ParameterName":"GEO2",
               "ParameterUnitID":"0",
               "ParameterDescription":"总压损失系数"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -559,6 +669,16 @@
               "ParameterName":"GEO2",
               "ParameterUnitID":"0",
               "ParameterDescription":"总压损失系数"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -579,6 +699,16 @@
               "ParameterName":"GEO2",
               "ParameterUnitID":"0",
               "ParameterDescription":"总压损失系数"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         }
@@ -610,6 +740,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"0",
               "ParameterDescription":"旋转比变化用系数"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         }
@@ -646,10 +786,20 @@
               "ParameterName":"GEO5",
               "ParameterUnitID":"1",
               "ParameterDescription":"回转半径"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
-        {
+        /*{
           "Type":"122",
           "arguments":[
             {
@@ -666,9 +816,19 @@
               "ParameterName":"GEO3",
               "ParameterUnitID":"1",
               "ParameterDescription":"孔长"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
-        },
+        },*/
         {
           "Type":"123",
           "arguments":[
@@ -681,6 +841,16 @@
               "ParameterName":"GEO1",
               "ParameterUnitID":"0",
               "ParameterDescription":"CD"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         }
@@ -727,6 +897,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"2",
               "ParameterDescription":"孔上游通道截面积"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -767,6 +947,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"2",
               "ParameterDescription":"孔上游通道截面积"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -807,6 +997,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"2",
               "ParameterDescription":"孔上游通道截面积"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -847,6 +1047,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"2",
               "ParameterDescription":"孔上游通道截面积"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -887,6 +1097,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"2",
               "ParameterDescription":"孔上游通道截面积"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -927,12 +1147,22 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"2",
               "ParameterDescription":"孔上游通道截面积"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         }
       ]
     },
-    {
+    /*{
       "ComponentTemplateName":"HOLFM1",
       "ImageSource":"com/lgsim/engine/graphEditor/data/testjpg/HOLFM1.png",
       "ComponentType":[
@@ -1162,7 +1392,7 @@
           ]
         }
       ]
-    },
+    },*/
     {
       "ComponentTemplateName":"SEAL",
       "ImageSource":"com/lgsim/engine/graphEditor/data/testjpg/SEAL.png",
@@ -1199,6 +1429,16 @@
               "ParameterName":"GEO5",
               "ParameterUnitID":"1",
               "ParameterDescription":"齿高"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -1234,6 +1474,16 @@
               "ParameterName":"GEO5",
               "ParameterUnitID":"1",
               "ParameterDescription":"齿高"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -1269,6 +1519,16 @@
               "ParameterName":"GEO5",
               "ParameterUnitID":"1",
               "ParameterDescription":"齿高"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -1304,6 +1564,16 @@
               "ParameterName":"GEO5",
               "ParameterUnitID":"1",
               "ParameterDescription":"齿高"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -1339,6 +1609,16 @@
               "ParameterName":"GEO5",
               "ParameterUnitID":"1",
               "ParameterDescription":"齿高"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -1374,6 +1654,16 @@
               "ParameterName":"GEO5",
               "ParameterUnitID":"1",
               "ParameterDescription":"齿高"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         }
@@ -1410,6 +1700,16 @@
               "ParameterName":"GEO4",
               "ParameterUnitID":"0",
               "ParameterDescription":"转速"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         }
@@ -1461,6 +1761,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"0",
               "ParameterDescription":"盘面摩阻系数修正系数"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -1506,6 +1816,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"0",
               "ParameterDescription":"盘面摩阻系数修正系数"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -1551,6 +1871,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"0",
               "ParameterDescription":"盘面摩阻系数修正系数"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -1596,6 +1926,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"0",
               "ParameterDescription":"盘面摩阻系数修正系数"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -1641,6 +1981,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"0",
               "ParameterDescription":"盘面摩阻系数修正系数"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         }
@@ -1687,6 +2037,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"1",
               "ParameterDescription":"盘间距"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -1722,6 +2082,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"1",
               "ParameterDescription":"盘间距"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -1767,6 +2137,16 @@
               "ParameterName":"GEO9",
               "ParameterUnitID":"24",
               "ParameterDescription":"右侧壁温"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -1802,6 +2182,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"1",
               "ParameterDescription":"盘间距"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         }
@@ -1843,6 +2233,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"0",
               "ParameterDescription":"接受孔旋转比变化用系数"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -1878,6 +2278,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"0",
               "ParameterDescription":"接受孔旋转比变化用系数"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -1913,6 +2323,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"0",
               "ParameterDescription":"接受孔旋转比变化用系数"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -1948,6 +2368,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"0",
               "ParameterDescription":"接受孔旋转比变化用系数"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         }
@@ -1974,6 +2404,16 @@
               "ParameterName":"GEO3",
               "ParameterUnitID":"13",
               "ParameterDescription":"热流量"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -1994,6 +2434,16 @@
               "ParameterName":"GEO4",
               "ParameterUnitID":"0",
               "ParameterDescription":"转速"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -2014,6 +2464,16 @@
               "ParameterName":"GEO4",
               "ParameterUnitID":"0",
               "ParameterDescription":"转速"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -2044,6 +2504,16 @@
               "ParameterName":"GEO5",
               "ParameterUnitID":"0",
               "ParameterDescription":"齿数"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         }
@@ -2080,6 +2550,16 @@
               "ParameterName":"GEO4",
               "ParameterUnitID":"1",
               "ParameterDescription":"靶面内腔直径"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -2140,6 +2620,16 @@
               "ParameterName":"GEO15",
               "ParameterUnitID":"0",
               "ParameterDescription":"壁冷气换热面积比"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -2200,6 +2690,16 @@
               "ParameterName":"GEO15",
               "ParameterUnitID":"0",
               "ParameterDescription":"壁冷气换热面积比"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -2260,6 +2760,16 @@
               "ParameterName":"GEO15",
               "ParameterUnitID":"0",
               "ParameterDescription":"壁冷气换热面积比"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -2320,6 +2830,16 @@
               "ParameterName":"GEO15",
               "ParameterUnitID":"0",
               "ParameterDescription":"壁冷气换热面积比"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         }
@@ -2371,6 +2891,16 @@
               "ParameterName":"GEO7",
               "ParameterUnitID":"2",
               "ParameterDescription":"相关管元件面积"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -2441,6 +2971,16 @@
               "ParameterName":"GEO15",
               "ParameterUnitID":"0",
               "ParameterDescription":"壁冷气换热面积比"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -2511,6 +3051,16 @@
               "ParameterName":"GEO15",
               "ParameterUnitID":"0",
               "ParameterDescription":"壁冷气换热面积比"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -2581,6 +3131,16 @@
               "ParameterName":"GEO15",
               "ParameterUnitID":"0",
               "ParameterDescription":"壁冷气换热面积比"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         }
@@ -2617,6 +3177,16 @@
               "ParameterName": "GEO4",
               "ParameterUnitID": "1",
               "ParameterDescription": "通道宽度"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -2647,6 +3217,16 @@
               "ParameterName": "GEO4",
               "ParameterUnitID": "1",
               "ParameterDescription": "通道宽度"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -2677,6 +3257,16 @@
               "ParameterName": "GEO4",
               "ParameterUnitID": "1",
               "ParameterDescription": "通道宽度"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -2707,6 +3297,16 @@
               "ParameterName": "GEO4",
               "ParameterUnitID": "1",
               "ParameterDescription": "通道宽度"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -2737,6 +3337,16 @@
               "ParameterName": "GEO4",
               "ParameterUnitID": "1",
               "ParameterDescription": "通道宽度"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         }
@@ -2803,6 +3413,16 @@
               "ParameterName":"GEO10",
               "ParameterUnitID":"1",
               "ParameterDescription":"压力面元件长度"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -2863,6 +3483,16 @@
               "ParameterName":"GEO10",
               "ParameterUnitID":"1",
               "ParameterDescription":"压力面元件长度"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -2973,6 +3603,16 @@
               "ParameterName":"GEO21",
               "ParameterUnitID":"0",
               "ParameterDescription":"壁导热与冷气换热面积比"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -3083,6 +3723,16 @@
               "ParameterName":"GEO21",
               "ParameterUnitID":"0",
               "ParameterDescription":"壁导热与冷气换热面积比"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         },
@@ -3193,6 +3843,16 @@
               "ParameterName":"GEO21",
               "ParameterUnitID":"0",
               "ParameterDescription":"壁导热与冷气换热面积比"
+            },
+            {
+              "ParameterName":"DOEL",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"DOEL"
+            },
+            {
+              "ParameterName":"KG",
+              "ParameterUnitID":"0",
+              "ParameterDescription":"KG"
             }
           ]
         }
@@ -3228,7 +3888,7 @@
           ]
         },
         {
-          "Type":"2 ",
+          "Type":"2",
           "arguments":[
             {
               "ParameterName":"GEO1",

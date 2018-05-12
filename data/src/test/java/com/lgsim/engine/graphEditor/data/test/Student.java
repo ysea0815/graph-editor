@@ -1,10 +1,16 @@
 package com.lgsim.engine.graphEditor.data.test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Student {
     private String name;
-    private List<String> Age;
+    private int age;
+
+    public  Student() {
+        this.name = "";
+        this.age = 0;
+    }
 
     public String getName() {
         return name;
@@ -14,19 +20,19 @@ public class Student {
         this.name = name;
     }
 
-    public List<String> getAge() {
-        return Age;
+    public int getAge() {
+        return age;
     }
 
-    public void setAge(List<String> Age) {
-        this.Age = Age;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     @Override
     public String toString() {
         return "Student{" +
                 "name='" + name + '\'' +
-                ", age='" + Age + '\'' +
+                ", age='" + age + '\'' +
                 '}';
     }
 }

@@ -1,7 +1,8 @@
 package com.lgsim.engine.graphEditor.widget.Component.tabletab;
 
 import com.lgsim.engine.graphEditor.api.data.IVertex;
-import com.lgsim.engine.graphEditor.widget.Component.VertexTable;
+import com.lgsim.engine.graphEditor.widget.Component.TablePanel;
+import javafx.scene.control.Tab;
 import org.apache.commons.lang.StringUtils;
 
 import javax.swing.*;
@@ -34,8 +35,8 @@ public class TableTab extends JTabbedPane {
 
     public void setTabbedPane(IVertex vertex) {
 
-       VertexTable cavityPanel = new VertexTable();
-        VertexTable globalPanel = new VertexTable();
+       TablePanel cavityPanel = new TablePanel();
+        TablePanel globalPanel = new TablePanel();
 
         if (StringUtils.equals(getNodeType(vertex), "global")) {
             tabbedPane.addTab("全局输入参数", globalPanel);

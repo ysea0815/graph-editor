@@ -4,6 +4,7 @@ import com.lgsim.engine.graphEditor.api.data.IGraph;
 import com.lgsim.engine.graphEditor.api.data.IGraphCalcCodec;
 import com.lgsim.engine.graphEditor.api.data.IVertex;
 import com.lgsim.engine.graphEditor.data.components.util.readjson.ReadJson;
+import com.lgsim.engine.graphEditor.data.components.util.writejson.GetJson;
 import com.lgsim.engine.graphEditor.data.components.util.writejson.WriteJson;
 import com.lgsim.engine.graphEditor.util.exception.DecodeException;
 import com.lgsim.engine.graphEditor.util.exception.EncodeException;
@@ -20,12 +21,13 @@ public class GraphCodecImpl implements IGraphCalcCodec
       Collection<IVertex> list = new ArrayList<>();
 
       list = graph.getVertexes();
-      String path = "C:\\Users\\admin\\Desktop\\test\\simpleCase.inp";
+      //String path = "C:\\Users\\admin\\Desktop\\test\\simpleCase.inp";
 
-      WriteJson wj = new WriteJson();
+      //WriteJson wj = new WriteJson();
+      GetJson getJson = new GetJson();
       byte[] bjson = null;
       try {
-          bjson = wj.writeJson(list,path);
+          bjson = getJson.getJson(list);
       }catch (Exception e){
           throw new EncodeException();
       }

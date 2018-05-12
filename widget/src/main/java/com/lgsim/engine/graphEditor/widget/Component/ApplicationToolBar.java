@@ -4,6 +4,7 @@ package com.lgsim.engine.graphEditor.widget.Component;
 import com.lgsim.engine.graphEditor.api.action.IApplicationAction;
 import com.lgsim.engine.graphEditor.util.ResourceUtil;
 import com.lgsim.engine.graphEditor.widget.ActionBundle;
+import com.lgsim.engine.graphEditor.widget.util.setfont.SetFont;
 
 import javax.swing.*;
 import java.util.*;
@@ -12,6 +13,8 @@ public class ApplicationToolBar extends JToolBar {
 
     private InitToolbarAction action = new InitToolbarAction();
 
+    SetFont setf = new SetFont();
+
     public ApplicationToolBar() {
 
         init();
@@ -19,38 +22,41 @@ public class ApplicationToolBar extends JToolBar {
     }
 
     public void init(){
-
-        JButton news = setTools("", action, ActionBundle.get("file.new"));
-        JButton open = setTools("", action, ActionBundle.get("file.open"));
-        JButton save = setTools("", action, ActionBundle.get("file.save"));
-        JButton cut = setTools("", action, ActionBundle.get("editor.cut"));
-        JButton copy = setTools("", action, ActionBundle.get("editor.copy"));
-        JButton paste = setTools("", action, ActionBundle.get("editor.paste"));
-        JButton delete = setTools("", action, ActionBundle.get("editor.delete"));
-        JButton undo = setTools("", action, ActionBundle.get("editor.undo"));
-        JButton redo = setTools("", action, ActionBundle.get("editor.redo"));
-        JButton search = setTools("", action, ActionBundle.get("layout.search.branch"));//查找分支
-        JButton last = setTools("", action, ActionBundle.get("layout.last"));
+        //String str1 = "<html><font style=\"font-size:12px;\">新建...</font></html>";
+        //JButton news = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/newfile.png", action, ActionBundle.get("file.new"));
+        JButton news = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/newfile.png", action, setf.setFontSize("新建...",14));
+        JButton open = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/open.png", action, setf.setFontSize("打开...(Ctrl+O)",14));
+        JButton save = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/save.png", action, setf.setFontSize("保存...(Ctrl+S)",14));
+        JButton cut = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/cut.png", action, setf.setFontSize("剪切(Ctrl+X)",14));
+        JButton copy = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/copy.png", action, setf.setFontSize("复制(Ctrl+C)",14));
+        JButton paste = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/paste.png", action, setf.setFontSize("粘贴(Ctrl+V)",14));
+        JButton delete = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/delete.png", action, setf.setFontSize("删除",14));
+        JButton undo = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/undo.png", action, setf.setFontSize("撤消(Ctrl+Z)",14));
+        JButton redo = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/redo.png", action, setf.setFontSize("重做(Ctrl+Y)",14));
+        /*JButton search = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/", action, ActionBundle.get("layout.search.branch"));//查找分支
+        JButton last = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/", action, ActionBundle.get("layout.last"));
         JButton next = setTools("", action, ActionBundle.get("layout.next"));
         JButton start = setTools("", action, ActionBundle.get("calc.start"));
         JButton argument = setTools("", action, ActionBundle.get("calc.argument"));//参数分析
-        JButton trend = setTools("", action, ActionBundle.get("calc.show.trend"));//显示曲线
-        JButton print = setTools("", action, ActionBundle.get("file.print"));
-        JButton preview = setTools("", action, ActionBundle.get("file.preview"));
-        JButton pictureOut = setTools("", action, ActionBundle.get("file.pictureOut"));//图片导出
-        JButton auto = setTools("", action, ActionBundle.get("file.auto"));
-        JButton svg = setTools("", action, ActionBundle.get("file.svg"));
-        JButton flash = setTools("", action, ActionBundle.get("file.flash"));
-        JButton sliver = setTools("", action, ActionBundle.get("file.sliver"));
-        JButton pdf = setTools("", action, ActionBundle.get("file.pdf"));
+        JButton trend = setTools("", action, ActionBundle.get("calc.show.trend"));//显示曲线*/
+        JButton print = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/print.png", action, setf.setFontSize("打印...(Ctrl+P)",14));
+        JButton preview = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/preview.png", action, setf.setFontSize("打印预览...",14));
+        JButton pictureOut = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/pictureout.png", action, setf.setFontSize("图片导出...",14));//图片导出
+        JButton auto = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/auto.png", action, setf.setFontSize("Autocad导出...",14));
+        JButton svg = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/svg.png", action, setf.setFontSize("SVG导出...",14));
+        JButton flash = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/flash.png", action, setf.setFontSize("Flash导出...",14));
+        JButton sliver = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/sliver.png", action, setf.setFontSize("Sliverlight导出...",14));
+        JButton pdf = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/pdf.png", action, setf.setFontSize("PDF导出...",14));
+        JButton about = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/about.png", action, setf.setFontSize("关于...",14));
+        JButton toolbar = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/toolbar.png", action, setf.setFontSize("工具栏选项",14));
 
-        JButton[] buttons = {news, open, save, cut, copy, paste, delete, undo, redo, search, last, next
-                , start, argument, trend, print, preview, pictureOut, auto, svg, flash, sliver, pdf};
-        List<JButton> standardList = Arrays.asList(buttons);
+        JButton[] button1 = {news, open, save, cut, copy, paste, delete, undo, redo
+                , print, preview, pictureOut, auto, svg, flash, sliver, pdf, about, toolbar};
+        List<JButton> standardList = Arrays.asList(button1);
         addToolBar(standardList);
 
 
-        JButton grid = setTools("", action, ActionBundle.get("align.grid"));
+        /*JButton grid = setTools("", action, ActionBundle.get("align.grid"));
         JButton same = setTools("", action, ActionBundle.get("size.same.grid"));
         JButton left = setTools("", action, ActionBundle.get("align.left"));
         JButton center = setTools("", action, ActionBundle.get("align.center"));
@@ -90,29 +96,40 @@ public class ApplicationToolBar extends JToolBar {
 
         JButton[] button5 = {rectangular, ellipse, line, graph};
         List<JButton> toolList = Arrays.asList(button5);
-        addToolBar(toolList);
+        addToolBar(toolList);*/
 
 
-        JButton vGrid = setTools("", action, ActionBundle.get("view.grid"));
-        JButton vScale = setTools("", action, ActionBundle.get("view.scale"));
-        JButton reference = setTools("", action, ActionBundle.get("view.reference"));
-        JButton port = setTools("", action, ActionBundle.get("view.port"));
+        JButton vGrid = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/vgrid.png", action, setf.setFontSize("网格",14));
+        JButton vScale = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/scale.png", action, setf.setFontSize("标尺",14));
+        JButton reference = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/reference.png", action, setf.setFontSize("参考",14));
+        JButton port = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/port.png", action, setf.setFontSize("端口",14));
+        JButton arrow = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/arrow.png", action, setf.setFontSize("箭头",14));
+        JButton shadow = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/shadow.png", action, setf.setFontSize("阴影",14));
+        JButton comBrowsers = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/combrowsers.png", action, setf.setFontSize("元件库浏览器",14));
+        JButton proBrowsers = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/proBrowsers.png", action, setf.setFontSize("属性浏览器",14));
+        JButton gridStyle = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/gridstyle.png", action, setf.setFontSize("网格风格",14));
+        JButton viewLayout = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/viewlayout.png", action, setf.setFontSize("查看布局",14));
 
-        JButton[] button6 = {vGrid, vScale, reference, port};
-        List<JButton> viewList = Arrays.asList(button6);
+        JButton[] button2 = {vGrid, vScale, reference, port, arrow, shadow, comBrowsers, proBrowsers, gridStyle, viewLayout};
+        List<JButton> viewList = Arrays.asList(button2);
         addToolBar(viewList);
 
 
-        JButton pointer = setTools("", action, ActionBundle.get("tool.pointer"));
-        JButton control = setTools("", action, ActionBundle.get("toolBar.control.pel"));
-        JButton magnify = setTools("", action, ActionBundle.get("view.magnify"));
-        JButton narrow = setTools("", action, ActionBundle.get("view.narrow"));
+        /*JButton pointer = setTools("", action, ActionBundle.get("tool.pointer"));
+        JButton control = setTools("", action, ActionBundle.get("toolBar.control.pel"));*/
+        JButton magnify = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/magnify.png", action, setf.setFontSize("放大",14));
+        JButton narrow = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/narrow.png", action, setf.setFontSize("缩小",14));
+        JButton aliGrid = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/aligrid.png", action, setf.setFontSize("对齐网格",14));
+        JButton aliScale = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/aliscale.png", action, setf.setFontSize("对齐标尺",14));
+        JButton catGuide = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/catguide.png", action, setf.setFontSize("捕捉指引",14));
+        JButton catRotation = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/catrotation.png", action, setf.setFontSize("捕捉旋转",14));
+        JButton toolbar1 = setTools("com/lgsim/engine/graphEditor/widget/images/toolbar/toolbar.png", action, setf.setFontSize("工具栏选项",14));
 
-        JButton[] button7 = {pointer, control, magnify, narrow};
-        List<JButton> pelList = Arrays.asList(button7);
+        JButton[] button3 = {magnify, narrow, aliGrid, aliScale, catGuide, catRotation, toolbar1};
+        List<JButton> pelList = Arrays.asList(button3);
         addToolBar(pelList);
 
-        JButton pNews = setTools("", action, ActionBundle.get("pel.new"));
+        /*JButton pNews = setTools("", action, ActionBundle.get("pel.new"));
         JButton pOpen = setTools("", action, ActionBundle.get("pel.open"));
         JButton pSave = setTools("", action, ActionBundle.get("pel.save"));
         JButton pClose = setTools("", action, ActionBundle.get("pel.close"));
@@ -123,7 +140,7 @@ public class ApplicationToolBar extends JToolBar {
 
         JButton custom = setTools("", action, ActionBundle.get("toolBar.custom"));
         List<JButton> customList = Arrays.asList(custom);
-        addToolBar(customList);
+        addToolBar(customList);*/
 
     }
 
@@ -157,9 +174,9 @@ public class ApplicationToolBar extends JToolBar {
         JButton sliver = setTools("", null, ActionBundle.get("file.sliver"));
         JButton pdf = setTools("", null, ActionBundle.get("file.pdf"));
 
-        JButton[] buttons = {news, open, save, cut, copy, paste, delete, undo, redo, search, last, next
+        JButton[] button1 = {news, open, save, cut, copy, paste, delete, undo, redo, search, last, next
                 , start, argument, trend, print, preview, pictureOut, auto, svg, flash, sliver, pdf};
-        List<JButton> standardList = Arrays.asList(buttons);
+        List<JButton> standardList = Arrays.asList(button1);
         addToolBar(standardList);
 
 
@@ -250,7 +267,7 @@ public class ApplicationToolBar extends JToolBar {
     }
 
     public Icon getImageIcon(String iconPath) {
-        iconPath = "com/lgsim/engine/graphEditor/widget/png/monkey.png";
+        //iconPath = "com/lgsim/engine/graphEditor/widget/png/monkey.png";
         Icon icon = ResourceUtil.lookupImageIcon(iconPath);
         return icon;
     }

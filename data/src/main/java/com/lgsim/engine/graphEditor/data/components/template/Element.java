@@ -21,7 +21,6 @@ public class Element implements IStencilContext {
 
     private List<IVertexStencil> elements;//元件库模板
 
-
     @Override
     public @NotNull List<IVertexStencil> getPredefinedStencils() {
 
