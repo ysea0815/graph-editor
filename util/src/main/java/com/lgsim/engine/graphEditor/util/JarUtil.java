@@ -1,19 +1,17 @@
 package com.lgsim.engine.graphEditor.util;
 
-import com.google.common.io.Files;
+import org.apache.commons.io.IOUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.jar.Attributes;
 import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 import java.util.jar.Manifest;
 
-public class JarUtil {
-
+public class JarUtil
+{
   private static final int BUFF_SIZE = 2048;
   private static final String sep = "/";
 
@@ -30,9 +28,10 @@ public class JarUtil {
   public static void pack(@NotNull File dir, @NotNull File jarFile, @NotNull Manifest manifest) throws IOException
   {
     supplementManifest(manifest);
-    JarOutputStream os = new JarOutputStream(new FileOutputStream(jarFile), manifest);
-    pack0(dir, os, null);
-    os.close();
+    try (JarOutputStream os = new JarOutputStream(new FileOutputStream(jarFile), manifest))
+    {
+      pack0(dir, os, null);
+    }
   }
 
 
@@ -43,23 +42,36 @@ public class JarUtil {
   }
 
 
-  private static void pack0(@NotNull File f, @NotNull JarOutputStream target, @Nullable String root) throws IOException
+  private static void pack0(@NotNull File maybeDir, @NotNull JarOutputStream target, @Nullable String root) throws IOException
   {
-    if (f.isDirectory()) {
-      String path = putEntry(f, target, true, root);
+    if (maybeDir.isDirectory())
+    {
+      String path = putEntry(maybeDir, target, true, root);
       target.closeEntry();
-      File[] files = f.listFiles();
-      if (files != null) {
-        for (File file : files) {
+      File[] files = maybeDir.listFiles();
+      if (files != null)
+      {
+        for (File file : files)
+        {
           pack0(file, target, path);
         }
       }
     }
-    else {
-      putEntry(f, target, false, root);
-      byte[] bytes = Files.toByteArray(f);
-      target.write(bytes);
-      target.closeEntry();
+    else
+    {
+      putEntry(maybeDir, target, false, root);
+      try (BufferedInputStream in = IOUtils.buffer(new FileInputStream(maybeDir)))
+      {
+        byte[] buff = new byte[BUFF_SIZE];
+        int offset = 0;
+        while (in.available() != 0)
+        {
+          int count = in.read(buff, offset, buff.length);
+          target.write(buff, offset, count);
+          offset += count;
+        }
+        target.closeEntry();
+      }
     }
   }
 
@@ -78,7 +90,8 @@ public class JarUtil {
   private static @NotNull String createEntryPath(@NotNull File src, boolean dir, @Nullable String root)
   {
     String name = src.getName();
-    if (dir && (!name.endsWith(sep))) {
+    if (dir && (!name.endsWith(sep)))
+    {
       name += sep;
     }
     return concatPath(root, name);
@@ -87,14 +100,18 @@ public class JarUtil {
 
   private static String concatPath(@Nullable String root, @NotNull String name)
   {
-    if (root == null) {
+    if (root == null)
+    {
       return name;
     }
-    else {
-      if (root.endsWith(sep)) {
+    else
+    {
+      if (root.endsWith(sep))
+      {
         return root + name;
       }
-      else {
+      else
+      {
         return root + sep + name;
       }
     }

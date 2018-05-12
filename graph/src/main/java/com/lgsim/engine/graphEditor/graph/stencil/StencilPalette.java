@@ -52,6 +52,14 @@ public class StencilPalette extends JPanel {
   }
 
 
+  public void setPreferredWidth(int width)
+  {
+    int cols = Math.max(1, width / 55);
+    setPreferredSize(new Dimension(width, (getComponentCount() * 55 / cols) + 30));
+    revalidate();
+  }
+
+
   public void addStencil(@NotNull final IVertexStencil stencil)
   {
     IVertex cellVal = GraphSupport.createVertex(stencil, false);

@@ -10,14 +10,11 @@ import java.awt.event.ActionEvent;
 
 @SuppressWarnings("WeakerAccess")
 public class VertexCellPasteAction extends VertexCellAction {
-
   private static final Logger log = LoggerFactory.getLogger(VertexCellPasteAction.class);
-
 
   public VertexCellPasteAction(@NotNull Document document) {
     super(document);
   }
-
 
   @Override
   public void actionPerformed(ActionEvent evt) {

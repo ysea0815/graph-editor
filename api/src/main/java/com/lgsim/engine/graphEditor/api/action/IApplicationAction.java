@@ -44,7 +44,7 @@ public interface IApplicationAction {
    *
    * @return 动作
    */
-  @NotNull Action getEditorNewDocumentAction();
+  @NotNull Action getDocumentNewAction();
 
 
   /**
@@ -52,7 +52,7 @@ public interface IApplicationAction {
    *
    * @return 动作
    */
-  @NotNull Action getEditorOpenDocumentAction();
+  @NotNull Action getDocumentOpenAction();
 
 
   /**
@@ -60,7 +60,7 @@ public interface IApplicationAction {
    *
    * @return 动作
    */
-  @NotNull Action getEditorCloseDocumentAction();
+  @NotNull Action getDocumentCloseAction();
 
 
   /**
@@ -68,7 +68,7 @@ public interface IApplicationAction {
    *
    * @return 动作
    */
-  @NotNull Action getEditorSaveDocumentAction();
+  @NotNull Action getDocumentSaveAction();
 
 
   /**

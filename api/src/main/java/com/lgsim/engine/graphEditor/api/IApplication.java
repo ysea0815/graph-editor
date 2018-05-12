@@ -2,7 +2,6 @@ package com.lgsim.engine.graphEditor.api;
 
 import com.lgsim.engine.graphEditor.api.action.IApplicationAction;
 import com.lgsim.engine.graphEditor.api.calc.ISolverEnvironment;
-import com.lgsim.engine.graphEditor.api.widget.console.IConsole;
 import com.lgsim.engine.graphEditor.util.Configuration;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -51,6 +50,14 @@ public interface IApplication {
 
 
   /**
+   * 设置应用动作
+   *
+   * @param action 动作
+   */
+  void setApplicationAction(@NotNull IApplicationAction action);
+
+
+  /**
    * 获取求解器执行环境
    *
    * @return 求解器执行环境
@@ -64,12 +71,4 @@ public interface IApplication {
    * @param environment 求解器执行环境
    */
   void setSolverEnvironment(@NotNull ISolverEnvironment environment);
-
-
-  /**
-   * 获取应用的控制台
-   *
-   * @return 控制台
-   */
-  @NotNull IConsole getConsole();
 }

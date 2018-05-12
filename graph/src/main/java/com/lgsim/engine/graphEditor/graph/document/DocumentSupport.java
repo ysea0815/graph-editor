@@ -35,8 +35,9 @@ public class DocumentSupport {
 
   public static void installOutlineListeners(@NotNull Document document)
   {
+    final mxGraphOutline graphOutline = document.getEditor().getGraphOutline();
     final mxGraphComponent comp = document.getSwingComponent();
-    mxGraphOutline graphOutline = new mxGraphOutline(comp);
+    graphOutline.setGraphComponent(comp);
     graphOutline.addMouseWheelListener(e -> {
       if (e.getSource() instanceof mxGraphOutline || e.isControlDown()) {
         if (e.getWheelRotation() < 0) {
@@ -51,7 +52,6 @@ public class DocumentSupport {
         // TODO notify application
       }
     });
-    document.getEditor().getDocumentStructure().setGraphOutline(graphOutline);
   }
 
 

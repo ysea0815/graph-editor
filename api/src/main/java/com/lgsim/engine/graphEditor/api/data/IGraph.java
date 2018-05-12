@@ -9,7 +9,6 @@ public interface IGraph extends Serializable {
 
   /**
    * 获取图中的节点
-   *
    * @return 图中的节点
    */
   @NotNull Collection<IVertex> getVertexes();

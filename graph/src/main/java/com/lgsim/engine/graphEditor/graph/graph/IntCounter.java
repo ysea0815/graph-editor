@@ -1,9 +1,7 @@
 package com.lgsim.engine.graphEditor.graph.graph;
 
-import java.io.Serializable;
-
 // TODO: thread safe?
-class IntCounter implements Serializable {
+class IntCounter {
 
   private int count;
 
@@ -13,13 +11,10 @@ class IntCounter implements Serializable {
   }
 
 
-  int inc()
+  void inc()
   {
-    int value;
     if (count != Integer.MAX_VALUE) {
-      value = count;
       count += 1;
-      return value;
     }
     else {
       throw new RuntimeException("integer counter overflow");
@@ -27,12 +22,15 @@ class IntCounter implements Serializable {
   }
 
 
-  public int dec()
+  public void dec()
   {
-    int value = count;
     if (count != 0) {
       count -= 1;
     }
-    return value;
+  }
+
+
+  int get() {
+    return count;
   }
 }

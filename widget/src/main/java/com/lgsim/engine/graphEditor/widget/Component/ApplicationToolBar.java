@@ -1,12 +1,12 @@
 package com.lgsim.engine.graphEditor.widget.Component;
 
+
 import com.lgsim.engine.graphEditor.api.action.IApplicationAction;
 import com.lgsim.engine.graphEditor.util.ResourceUtil;
 import com.lgsim.engine.graphEditor.widget.ActionBundle;
 
 import javax.swing.*;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class ApplicationToolBar extends JToolBar {
 
@@ -133,9 +133,9 @@ public class ApplicationToolBar extends JToolBar {
 
     private void createTools(IApplicationAction action) {
 
-        JButton news = setTools("", action.getEditorNewDocumentAction(), ActionBundle.get("file.new"));
-        JButton open = setTools("", action.getEditorOpenDocumentAction(), ActionBundle.get("file.open"));
-        JButton save = setTools("", action.getEditorSaveDocumentAction(), ActionBundle.get("file.save"));
+        JButton news = setTools("", action.getDocumentNewAction(), ActionBundle.get("file.new"));
+        JButton open = setTools("", action.getDocumentOpenAction(), ActionBundle.get("file.open"));
+        JButton save = setTools("", action.getDocumentSaveAction(), ActionBundle.get("file.save"));
         JButton cut = setTools("", action.getVertexCellCutAction(), ActionBundle.get("editor.cut"));
         JButton copy = setTools("", action.getVertexCellCopyAction(), ActionBundle.get("editor.copy"));
         JButton paste = setTools("", action.getVertexCellPasteAction(), ActionBundle.get("editor.paste"));

@@ -70,7 +70,7 @@ public class DocumentAcceleratorKeyPressedConsumer extends DocumentAcceleratorCo
   }
 
   private void saveDocument(@NotNull KeyEvent event) {
-    Action action = document.getApplicationAction().getEditorSaveDocumentAction();
+    Action action = document.getApplicationAction().getDocumentSaveAction();
     ActionEvent actionEvent = ActionSupport.createActionEvent(document.getSwingComponent(), event);
     action.actionPerformed(actionEvent);
   }

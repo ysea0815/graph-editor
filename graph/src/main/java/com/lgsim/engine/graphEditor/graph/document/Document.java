@@ -6,32 +6,35 @@ import com.lgsim.engine.graphEditor.api.action.IApplicationAction;
 import com.lgsim.engine.graphEditor.api.graph.impl.GraphDocumentImpl;
 import com.lgsim.engine.graphEditor.api.widget.IApplicationWidget;
 import com.lgsim.engine.graphEditor.graph.Editor;
-import com.lgsim.engine.graphEditor.graph.action.*;
+import com.lgsim.engine.graphEditor.graph.action.ApplicationActionImpl;
 import com.lgsim.engine.graphEditor.graph.graph.Graph;
 import com.lgsim.engine.graphEditor.graph.graph.GraphComponent;
 import com.mxgraph.swing.mxGraphComponent;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
+import java.io.IOException;
 
 @SuppressWarnings({"WeakerAccess"})
 public class Document extends GraphDocumentImpl implements IApplicationWidget {
 
   private Editor editor;
   private IApplication application;
-  private final GraphComponent swingComponent;
+  private GraphComponent swingComponent;
 
 
-  public Document(@NotNull Editor editor, @NotNull Graph graph)
+  public Document() {
+  }
+
+
+  public Document(@NotNull Editor editor)
   {
     this.editor = editor;
-    application = editor.getApplication();
-    swingComponent = new GraphComponent(graph);
-    setGraph(graph);
+    this.application = editor.getApplication();
+    final Graph graph = new Graph();
+    this.swingComponent = new GraphComponent(graph);
+    this.setGraph(graph);
     settingGraphComponent();
-    DocumentSupport.installOutlineListeners(this);
-    DocumentSupport.installGraphDocumentListeners(this);
-    initActions();
   }
 
 
@@ -39,15 +42,9 @@ public class Document extends GraphDocumentImpl implements IApplicationWidget {
     swingComponent.setMinimumSize(new Dimension(320, 320));
     swingComponent.setColumnHeaderView(new DocumentRuler(swingComponent, DocumentRuler.ORIENTATION_HORIZONTAL));
     swingComponent.setRowHeaderView(new DocumentRuler(swingComponent, DocumentRuler.ORIENTATION_VERTICAL));
-  }
-
-
-  private void initActions() {
-    ApplicationActionMap actionMap = (ApplicationActionMap) getApplicationAction();
-    actionMap.put("vertexCell.copy", new VertexCellCopyAction(this));
-    actionMap.put("vertexCell.paste", new VertexCellPasteAction(this));
-    actionMap.put("vertexCell.delete", new VertexCellDeleteAction(this));
-    actionMap.put("vertexCell.cut", new VertexCellCutAction(this));
+    application.setApplicationAction(new ApplicationActionImpl(this));
+    DocumentSupport.installOutlineListeners(this);
+    DocumentSupport.installGraphDocumentListeners(this);
   }
 
 
@@ -62,6 +59,11 @@ public class Document extends GraphDocumentImpl implements IApplicationWidget {
   public @NotNull mxGraphComponent getSwingComponent()
   {
     return swingComponent;
+  }
+
+
+  public void setSwingComponent(GraphComponent swingComponent) {
+    this.swingComponent = swingComponent;
   }
 
 
@@ -82,13 +84,12 @@ public class Document extends GraphDocumentImpl implements IApplicationWidget {
   }
 
 
-  public Editor getEditor() {
-    return editor;
+  public void output() throws IOException {
+    editor.getDocumentContext().put(this);
   }
 
 
-  @Override
-  public String toString() {
-    return getTitle();
+  public Editor getEditor() {
+    return editor;
   }
 }

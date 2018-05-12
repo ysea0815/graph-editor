@@ -4,20 +4,15 @@ import com.lgsim.engine.graphEditor.api.IApplication;
 import com.lgsim.engine.graphEditor.api.MessageBundle;
 import com.lgsim.engine.graphEditor.api.data.IStencilContext;
 import com.lgsim.engine.graphEditor.api.data.IVertexStencil;
+import com.lgsim.engine.graphEditor.api.graph.IEditor;
 import com.lgsim.engine.graphEditor.api.widget.IApplicationToolbar;
-import com.lgsim.engine.graphEditor.api.widget.IApplicationWidget;
-import com.lgsim.engine.graphEditor.api.widget.console.IConsole;
 import com.lgsim.engine.graphEditor.api.widget.table.IVertexTable;
-import com.lgsim.engine.graphEditor.graph.action.*;
 import com.lgsim.engine.graphEditor.graph.document.Document;
 import com.lgsim.engine.graphEditor.graph.document.DocumentButtonTab;
 import com.lgsim.engine.graphEditor.graph.document.DocumentContext;
-import com.lgsim.engine.graphEditor.graph.document.DocumentStructure;
-import com.lgsim.engine.graphEditor.graph.graph.Graph;
 import com.lgsim.engine.graphEditor.graph.stencil.StencilPalette;
 import com.lgsim.engine.graphEditor.graph.stencil.StencilSupport;
-import com.lgsim.engine.graphEditor.graph.vertex.VertexGroupPalette;
-import com.lgsim.engine.graphEditor.graph.vertex.VertexSupport;
+import com.mxgraph.swing.mxGraphOutline;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
@@ -32,7 +27,7 @@ import java.util.Vector;
 import java.util.function.BiConsumer;
 
 @SuppressWarnings("WeakerAccess")
-public class Editor extends JPanel implements IApplicationWidget {
+public class Editor extends JPanel implements IEditor {
 
   private static final Logger log = LoggerFactory.getLogger(Editor.class);
 
@@ -41,25 +36,20 @@ public class Editor extends JPanel implements IApplicationWidget {
   private List<Document> documents;
   private int currentDocumentIndex;
 
-  private IConsole console;
-
-  private DocumentStructure documentStructure;
+  private mxGraphOutline graphOutline;
   private JTabbedPane libraryPane;
   private IVertexTable vertexTable;
   private JTabbedPane docTabbedPane;
   private StencilPalette predefinedPalette;
   private StencilPalette userDefinedPalette;
-  private VertexGroupPalette vertexGroupPalette;
 
 
   public Editor(@NotNull IApplication application)
   {
-    setApplication(application);
-    documentContext = new DocumentContext(this);
+    this.application = application;
+    documentContext = new DocumentContext(application);
     documents = new Vector<>();
-    console = ImplementationContext.INSTANCE.getConsole();
     initUIComponents();
-    initActions();
     loadStencils();
     loadDocuments();
   }
@@ -69,17 +59,17 @@ public class Editor extends JPanel implements IApplicationWidget {
   {
     setLayout(new BorderLayout());
 
-    documentStructure = new DocumentStructure();
+    graphOutline = new mxGraphOutline(null);
     libraryPane = new JTabbedPane();
     vertexTable = ImplementationContext.INSTANCE.getVertexTable();
     docTabbedPane = new JTabbedPane();
-    JSplitPane westPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, libraryPane, documentStructure);
-    JSplitPane consoleDocPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, docTabbedPane, console.getSwingComponent());
+    JSplitPane westPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, libraryPane, graphOutline);
+    JComponent console = ImplementationContext.INSTANCE.getConsole().getSwingComponent();
+    JSplitPane consoleDocPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, docTabbedPane, console);
     JSplitPane centerPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, westPane, consoleDocPane);
     JSplitPane eastPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, centerPane, vertexTable.getSwingComponent());
     predefinedPalette = StencilSupport.createStencilPalette();
     userDefinedPalette = StencilSupport.createStencilPalette();
-    vertexGroupPalette = VertexSupport.createVertexPalette();
     IApplicationToolbar applicationToolbar = ImplementationContext.INSTANCE.getApplicationToolbar();
 
     JToolBar toolbar = applicationToolbar.getSwingComponent();
@@ -108,9 +98,10 @@ public class Editor extends JPanel implements IApplicationWidget {
     consoleDocPane.setResizeWeight(1);
 
     libraryPane.setMinimumSize(new Dimension(320, 0));
+    graphOutline.setMinimumSize(new Dimension(320, 320));
+
     vertexTable.getSwingComponent().setMinimumSize(new Dimension(320, 0));
-    // TODO 需要在IConsole实例中维护一个
-    console.getSwingComponent().setMinimumSize(new Dimension(0, 210));
+    console.setMinimumSize(new Dimension(0, 210));
 
     westPane.getRightComponent().setPreferredSize(
         new Dimension((int) vertexTable.getSwingComponent().getPreferredSize().getWidth(), 320)
@@ -124,23 +115,12 @@ public class Editor extends JPanel implements IApplicationWidget {
     add(eastPane, BorderLayout.CENTER);
 //    add(statusBar, BorderLayout.SOUTH);
 
-    loadPalettes();
+    loadStencilPalettes();
   }
 
 
-  private void initActions() {
-    ApplicationActionMap actionMap = (ApplicationActionMap) application.getApplicationAction();
-    actionMap.put("editor.newDocument", new EditorNewDocumentAction(this));
-    actionMap.put("editor.openDocument", new EditorOpenDocumentAction(this));
-    actionMap.put("editor.closeDocument", new EditorCloseDocumentAction(this));
-    actionMap.put("editor.saveDocument", new EditorSaveDocumentAction(this));
-    actionMap.put("solver.calc", new SolverCalcAction(this));
-    actionMap.put("solver.setting", new SolverSettingAction(this));
-  }
-
-
-  private void loadPalettes() {
-    BiConsumer<JComponent, String> loadPalette = (palette, title) -> {
+  private void loadStencilPalettes() {
+    BiConsumer<StencilPalette, String> loadStencilPalette = (palette, title) -> {
       final JScrollPane scrollPane = new JScrollPane(palette);
       scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
       scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -148,16 +128,13 @@ public class Editor extends JPanel implements IApplicationWidget {
       libraryPane.addComponentListener(new ComponentAdapter() {
         public void componentResized(ComponentEvent e)
         {
-          int width = scrollPane.getWidth() - scrollPane.getVerticalScrollBar().getWidth();
-          int cols = Math.max(1, width / 55);
-          setPreferredSize(new Dimension(width, (getComponentCount() * 55 / cols) + 30));
-          revalidate();
+          int w = scrollPane.getWidth() - scrollPane.getVerticalScrollBar().getWidth();
+          palette.setPreferredWidth(w);
         }
       });
     };
-    loadPalette.accept(predefinedPalette, MessageBundle.get("vertexStencil.predefined"));
-    loadPalette.accept(userDefinedPalette, MessageBundle.get("vertexStencil.userDefined"));
-    loadPalette.accept(vertexGroupPalette, MessageBundle.get("vertexGroup.name"));
+    loadStencilPalette.accept(predefinedPalette, MessageBundle.get("vertexStencil.predefined"));
+    loadStencilPalette.accept(userDefinedPalette, MessageBundle.get("vertexStencil.userDefined"));
   }
 
 
@@ -182,23 +159,27 @@ public class Editor extends JPanel implements IApplicationWidget {
   private void loadDocuments()
   {
     final List<Document> documents = getLastDocuments();
-    if (documents != null) {
+    if (documents == null) {
+      openNewDocument();
+    }
+    else {
       openLastDocuments();
     }
   }
 
 
-  public void addDocument(@NotNull Document document) {
+  public void openNewDocument()
+  {
+    Document document = new Document(this);
+    this.addDocument(document);
+  }
+
+
+  private void addDocument(@NotNull Document document) {
     docTabbedPane.add(document.getTitle(), document.getSwingComponent());
     docTabbedPane.setTabComponentAt(currentDocumentIndex, new DocumentButtonTab(docTabbedPane));
     currentDocumentIndex = documents.size();
     documents.add(currentDocumentIndex, document);
-    installGraphObservers((Graph) document.getGraph());
-  }
-
-
-  private void installGraphObservers(@NotNull Graph graph) {
-    graph.getGraphObservable().addObserver(vertexGroupPalette.getVertexGroupObserver());
   }
 
 
@@ -215,8 +196,13 @@ public class Editor extends JPanel implements IApplicationWidget {
   }
 
 
-  public DocumentStructure getDocumentStructure() {
-    return documentStructure;
+  public @NotNull mxGraphOutline getGraphOutline() {
+    return graphOutline;
+  }
+
+
+  public @NotNull IApplication getApplication() {
+    return application;
   }
 
 
@@ -240,11 +226,7 @@ public class Editor extends JPanel implements IApplicationWidget {
   }
 
 
-  /**
-   * 获取编辑的文档
-   *
-   * @return 编辑的文档，如果没有，返回{@code null}
-   */
+  @Override
   public @Nullable Document getDocument()
   {
     if (documents.size() > 0) {
@@ -253,28 +235,5 @@ public class Editor extends JPanel implements IApplicationWidget {
     else {
       return null;
     }
-  }
-
-
-  @Override
-  public @NotNull IApplication getApplication() {
-    return application;
-  }
-
-
-  @Override
-  public void setApplication(@NotNull IApplication application) {
-    this.application = application;
-  }
-
-
-  @Override
-  public @NotNull JComponent getSwingComponent() {
-    return this;
-  }
-
-
-  public IConsole getConsole() {
-    return console;
   }
 }

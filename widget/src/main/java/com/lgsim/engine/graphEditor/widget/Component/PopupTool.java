@@ -6,6 +6,7 @@ import com.lgsim.engine.graphEditor.util.ExceptionManager;
 import com.lgsim.engine.graphEditor.util.ImplementationUtil;
 import com.lgsim.engine.graphEditor.util.ResourceUtil;
 import com.lgsim.engine.graphEditor.widget.ActionBundle;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,6 +16,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.*;
 import java.util.List;
+import java.util.function.Supplier;
+
 
 public class PopupTool extends JPopupMenu {
     private JPopupMenu menu;
@@ -122,9 +125,9 @@ public class PopupTool extends JPopupMenu {
      */
     public void createTools() {
 
-        JButton news = setTools("", action.getEditorNewDocumentAction(), ActionBundle.get("file.new"));
-        JButton open = setTools("", action.getEditorOpenDocumentAction(), ActionBundle.get("file.open"));
-        JButton save = setTools("", action.getEditorSaveDocumentAction(), ActionBundle.get("file.save"));
+        JButton news = setTools("", action.getDocumentNewAction(), ActionBundle.get("file.new"));
+        JButton open = setTools("", action.getDocumentOpenAction(), ActionBundle.get("file.open"));
+        JButton save = setTools("", action.getDocumentSaveAction(), ActionBundle.get("file.save"));
         JButton cut = setTools("", action.getVertexCellCutAction(), ActionBundle.get("editor.cut"));
         JButton copy = setTools("", action.getVertexCellCopyAction(), ActionBundle.get("editor.copy"));
         JButton paste = setTools("", action.getVertexCellPasteAction(), ActionBundle.get("editor.paste"));

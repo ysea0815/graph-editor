@@ -2,7 +2,6 @@ package com.lgsim.engine.graphEditor.graph.action;
 
 import com.google.common.io.Files;
 import com.lgsim.engine.graphEditor.api.calc.SolverEnvironment;
-import com.lgsim.engine.graphEditor.graph.Editor;
 import com.lgsim.engine.graphEditor.graph.document.Document;
 import com.lgsim.engine.graphEditor.ui.SolverSettingsDialog;
 import com.lgsim.engine.graphEditor.ui.bean.SolverSettingsBean;
@@ -57,9 +56,10 @@ public class SolverSettingAction extends SolverAction {
   }
 
 
-  public SolverSettingAction(@NotNull Editor editor) {
-    super(editor);
-    Configuration configuration = editor.getApplication().getConfiguration();
+  @SuppressWarnings("WeakerAccess")
+  public SolverSettingAction(@NotNull Document document) {
+    super(document);
+    Configuration configuration = document.getApplication().getConfiguration();
     this.settingsBean = loadSettings(configuration.getSolverDirectory());
   }
 
@@ -67,14 +67,11 @@ public class SolverSettingAction extends SolverAction {
   @Override
   public void actionPerformed(ActionEvent event)
   {
-    Document document = editor.getDocument();
-    if (document != null) {
-      if (settingsBean == null) {
-        showSettingsDialog(document);
-      }
-      else {
-        setSolverEnvironment(document, settingsBean);
-      }
+    if (settingsBean == null) {
+      showSettingsDialog();
+    }
+    else {
+      setSolverEnvironment(document, settingsBean);
     }
   }
 
@@ -88,8 +85,8 @@ public class SolverSettingAction extends SolverAction {
   }
 
 
-  private void showSettingsDialog(@NotNull Document document) {
-    Configuration configuration = editor.getApplication().getConfiguration();
+  private void showSettingsDialog() {
+    Configuration configuration = document.getApplication().getConfiguration();
     BiConsumer<SolverSettingsDialog, SolverSettingsBean> settingsFun =
         genConsumeSettingsFun(document, configuration.getSolverDirectory(), this::setSettingsBean);
     SolverSettingsDialog dialog = new SolverSettingsDialog(settingsFun);

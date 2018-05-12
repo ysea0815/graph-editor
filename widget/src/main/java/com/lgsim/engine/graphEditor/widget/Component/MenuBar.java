@@ -1,8 +1,12 @@
 package com.lgsim.engine.graphEditor.widget.Component;
 
 import com.lgsim.engine.graphEditor.api.action.IApplicationAction;
+import com.lgsim.engine.graphEditor.util.ExceptionManager;
+import com.lgsim.engine.graphEditor.util.ImplementationUtil;
 import com.lgsim.engine.graphEditor.util.ResourceUtil;
 import com.lgsim.engine.graphEditor.widget.ActionBundle;
+import com.lgsim.engine.graphEditor.widget.IWidegtImp.IMenuBarImp;
+import org.apache.commons.lang.exception.ExceptionUtils;
 
 import javax.swing.*;
 import java.util.Arrays;
@@ -36,9 +40,9 @@ public class MenuBar extends JMenuBar {
     private void addFileMenu(IApplicationAction action) {
 
         JMenu doc = new JMenu(ActionBundle.get("file.name"));
-        JMenuItem save = createMenuItem("file.save", action.getEditorSaveDocumentAction(), "file.save");
-        JMenuItem news = createMenuItem("file.new", action.getEditorNewDocumentAction(), "file.new");
-        JMenuItem open = createMenuItem("file.open", action.getEditorOpenDocumentAction(), "file.open");
+        JMenuItem save = createMenuItem("file.save", action.getDocumentSaveAction(), "file.save");
+        JMenuItem news = createMenuItem("file.new", action.getDocumentNewAction(), "file.new");
+        JMenuItem open = createMenuItem("file.open", action.getDocumentOpenAction(), "file.open");
         JMenuItem saveAs = createMenuItem("file.saveAs", null, "file.saveAs");
         JMenuItem pictureOut = createMenuItem("file.pictureOut", null, "file.pictureOut");
         JMenuItem network = createMenuItem("file.switch.network", null, "file.switch.network");

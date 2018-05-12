@@ -43,9 +43,9 @@ public class MenuBar extends JMenuBar {
     private void addFileMenu() {
         JMenu doc = new JMenu(MessageBundle.get("file.name"));
 
-        JMenuItem save = createMenuItem("file.save", iApplicationAction.getEditorSaveDocumentAction(), "file.save");
-        JMenuItem news = createMenuItem("file.new", iApplicationAction.getEditorNewDocumentAction(), "file.new");
-        JMenuItem open = createMenuItem("file.open", iApplicationAction.getEditorOpenDocumentAction(), "file.open");
+        JMenuItem save = createMenuItem("file.save", iApplicationAction.getDocumentSaveAction(), "file.save");
+        JMenuItem news = createMenuItem("file.new", iApplicationAction.getDocumentNewAction(), "file.new");
+        JMenuItem open = createMenuItem("file.open", iApplicationAction.getDocumentOpenAction(), "file.open");
         JMenuItem saveAs = createMenuItem("file.saveAs", null, "file.saveAs");
         JMenuItem pictureOut = createMenuItem("file.pictureOut", null, "file.pictureOut");
         JMenuItem network = createMenuItem("file.switch.network", null, "file.switch.network");

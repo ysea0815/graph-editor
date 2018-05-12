@@ -5,100 +5,93 @@ import com.lgsim.engine.graphEditor.api.data.IVertexArgument;
 import com.lgsim.engine.graphEditor.api.data.IVertexOutput;
 import com.lgsim.engine.graphEditor.api.data.IVertexStencil;
 import com.lgsim.engine.graphEditor.api.data.impl.VertexImpl;
-import com.lgsim.engine.graphEditor.graph.ImplementationContext;
 import com.lgsim.engine.graphEditor.util.CollectionUtil;
 import com.mxgraph.model.mxCell;
 import com.mxgraph.util.mxEventSource;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 
 @SuppressWarnings("WeakerAccess")
 public class GraphSupport {
+  private static final Logger log = LoggerFactory.getLogger(GraphSupport.class);
+
+
+  public static void applyCellSettings(@NotNull mxCell cell, @NotNull IntCounter counter, @NotNull Graph graph) {
+    VertexImpl vertex = extractVertexImpl(cell);
+    if (vertex != null) {
+      String id = counter.get() + "";
+      counter.inc();
+      vertex.setID(id);
+      vertex.setDisplayName(id);
+      graph.addVertex(vertex);
+    }
+  }
+
+  @Contract("null -> null")
+  public static @Nullable VertexImpl extractVertexImpl(@Nullable Object o) {
+    if (o != null) {
+      if (o instanceof mxCell) {
+        Object v = ((mxCell) o).getValue();
+        if (v instanceof VertexImpl) {
+          return (VertexImpl) v;
+        }
+      }
+    }
+    return null;
+  }
 
   public static @Nullable IVertex extractVertex(@NotNull mxCell cell) {
     Object value = cell.getValue();
     if (value instanceof IVertex) {
       return (IVertex) value;
-    }
-    else {
+    } else {
       return null;
     }
   }
-
 
   public static void applyGraphSettings(@NotNull Graph graph) {
     graph.setAlternateEdgeStyle("edgeStyle=mxEdgeStyle.ElbowConnector;elbow=vertical");
     graph.setSplitEnabled(false);
     graph.setAllowDanglingEdges(false);
     graph.setCellsResizable(false);
-    graph.setCellsEditable(false);
+    graph.setCellsEditable(true);
     graph.setKeepEdgesInForeground(true);
   }
 
+  public static mxEventSource.mxIEventListener cellConnectedListener(@NotNull Graph graph, @NotNull Runnable runnable) {
+    return cellConnectedListener(graph::setSourceNode, graph::setTargetNode, graph::setHandDrawnEdge, runnable);
+  }
 
-  public static void repaintCavity(boolean disableContainsCavities, @NotNull Graph graph,
-                                   @NotNull VertexImpl src, @NotNull VertexImpl dst)
+  @Contract(pure = true)
+  private static mxEventSource.mxIEventListener cellConnectedListener(@NotNull Consumer<mxCell> sourceConsumer,
+                                                                      @NotNull Consumer<mxCell> targetConsumer,
+                                                                      @NotNull Consumer<mxCell> edgeConsumer,
+                                                                      @NotNull Runnable runnable)
   {
-    mxCell source = graph.getSourceNode();
-    mxCell target = graph.getTargetNode();
-    mxCell edge = graph.getEdge();
-    if (disableContainsCavities) {
-      boolean notContains = !GraphSupport.isCavity(source) && !GraphSupport.isCavity(target);
-      if (notContains) {
-        repaintCavity(source, edge, target, graph, src, dst);
+    return (sender, evt) -> {
+      Map<String, Object> properties = evt.getProperties();
+      mxCell terminal = (mxCell) properties.get("terminal");
+      mxCell edge = (mxCell) properties.get("edge");
+      boolean isSource = (boolean) properties.get("source");
+      if (isSource) {
+        sourceConsumer.accept(terminal);
+        edgeConsumer.accept(edge);
+        log.debug("connecting cells, from {}", terminal);
+      } else {
+        targetConsumer.accept(terminal);
+        runnable.run();
+        log.debug("cells connected, target is {}", terminal);
       }
-    }
-    else {
-      repaintCavity(source, edge, target, graph, src, dst);
-    }
+    };
   }
-
-
-  private static void repaintCavity(@NotNull mxCell source, @NotNull mxCell edge,
-                                    @NotNull mxCell target, @NotNull Graph graph,
-                                    @NotNull VertexImpl src, @NotNull VertexImpl dst)
-  {
-    graph.removeCells(new mxCell[]{edge});
-    Point position = getCavityPosition(source.getGeometry().getPoint(), target.getGeometry().getPoint());
-    Object p = graph.getDefaultParent();
-    mxCell cavityCell = createCavityCell(position, p, graph);
-    VertexImpl cavity = (VertexImpl) cavityCell.getValue();
-    graph.insertEdge(p, null, null, source, cavityCell);
-    graph.insertEdge(p, null, null, cavityCell, target);
-    GraphHook.vertexConnected(src, cavity);
-    GraphHook.vertexConnected(cavity, dst);
-  }
-
-
-  private static @NotNull mxCell createCavityCell(@NotNull Point position, @NotNull Object p, @NotNull Graph graph) {
-    final IVertexStencil stencil = ImplementationContext.INSTANCE.getStencilContext().getCavityStencil();
-    VertexImpl vertex = GraphSupport.createVertex(stencil, true);
-    mxCell cell = (mxCell) graph.insertVertex(p, null, vertex, position.x, position.y, 48, 48);
-    GraphHook.vertexAdded(vertex, graph.getVertexCounter(), graph);
-    settingCavityCellStyle(cell, stencil);
-    return cell;
-  }
-
-
-  private static void settingCavityCellStyle(@NotNull mxCell cavity, @NotNull IVertexStencil stencil) {
-    String icon = stencil.getGraphIcon();
-    cavity.setStyle("glass=1;rounded=1;shadow=1;imageWidth=32;imageHeight=32;arcSize=48;icon;image=/" + icon);
-  }
-
-
-  private static Point getCavityPosition(Point from, Point to)
-  {
-    int x = (from.x + to.x) / 2;
-    int y = (from.y + to.y) / 2;
-    return new Point(x, y);
-  }
-
 
   public static mxEventSource.mxIEventListener cellsMovedListener(@NotNull Graph graph) {
     return cellsMovedListener(cells -> {
@@ -109,7 +102,6 @@ public class GraphSupport {
       }
     });
   }
-
 
   private static mxEventSource.mxIEventListener cellsMovedListener(@NotNull Consumer<mxCell[]> movedCellsConsumer) {
     return (sender, evt) -> {
@@ -128,14 +120,12 @@ public class GraphSupport {
     };
   }
 
-
   /* predicates */
   public static boolean isCavity(@NotNull mxCell cell) {
     IVertex vertex = extractVertex(cell);
     if (vertex == null) {
       return false;
-    }
-    else {
+    } else {
       return vertex.isCavity();
     }
   }

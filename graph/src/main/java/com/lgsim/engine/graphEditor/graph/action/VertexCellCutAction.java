@@ -10,14 +10,10 @@ import java.awt.event.ActionEvent;
 
 @SuppressWarnings("WeakerAccess")
 public class VertexCellCutAction extends VertexCellAction {
-
   private static final Logger log = LoggerFactory.getLogger(VertexCellCutAction.class);
-
-
   public VertexCellCutAction(@NotNull Document document) {
     super(document);
   }
-
 
   @Override
   public void actionPerformed(ActionEvent evt) {
