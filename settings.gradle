@@ -1,0 +1,10 @@
+rootProject.name = 'graph-editor'
+
+include 'api'
+include 'util'
+include 'data'
+include 'ui'
+include 'widget'
+include 'graph'
+include 'app'
+
